@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 import CardMessage from '../CardMessage';
 import services from '../../services';
+
+const Container = styled.div`
+    display: inline-flex;
+    flex-direction: column;
+`;
 
 const MessagesList = () => {
     const [messages, setMessages] = useState([]);
@@ -13,9 +19,9 @@ const MessagesList = () => {
         fetchData();
     }, []);
     return (
-        <div>
+        <Container>
             {messages.map(message => (<CardMessage message={message} />))}
-        </div>
+        </Container>
     )
 }
 
