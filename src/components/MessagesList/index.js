@@ -4,7 +4,7 @@ import CardMessage from '../CardMessage';
 import services from '../../services';
 
 const Container = styled.div`
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
 `;
 
