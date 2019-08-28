@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CardMessage from '../CardMessage';
+import services from '../../services';
 
 const MessagesList = () => {
+    const [messages, setMessages] = useState([]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        const result = await services.getMessages();
+        setMessages(result.data);
+    }, []);
     return (
         <div>
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
+            {messages.map(message => (<CardMessage message={message} />))}
         </div>
     )
 }

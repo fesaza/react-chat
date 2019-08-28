@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CardMessage = () => {
+const CardMessage = ({ message }) => {
     return (
         <div>
-            Tarjeta para mostrar el mensaje
+            {message.author} - {message.message}
         </div>
     )
 }
