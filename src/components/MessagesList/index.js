@@ -4,11 +4,10 @@ import services from '../../services';
 
 const MessagesList = () => {
     const [messages, setMessages] = useState([]);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
-        const result = await services.getMessages();
-        setMessages(result.data);
+        const data = await services.getMessages();
+        setMessages(data);
     }, []);
     return (
         <div>

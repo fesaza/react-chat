@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardMessage = ({ message }) => {
+const CardMessage = ({message}) => {
     return (
         <div>
             {message.author} - {message.message}
