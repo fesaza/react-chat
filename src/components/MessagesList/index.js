@@ -8,16 +8,19 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const MessagesList = () => {
+const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
     const [messages, setMessages] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
+            onMessagesLoaded && onMessagesLoaded();
             const data = await services.getMessages();
             setMessages(data);
         };
 
-        fetchData();
-    }, []);
+        if(needRefresh || messages.length === 0){
+            fetchData();
+        }
+    }, [messages.length, needRefresh, onMessagesLoaded]);
     return (
         <Container>
             {messages.map(message => (<CardMessage message={message} />))}

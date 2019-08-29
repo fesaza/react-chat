@@ -71,16 +71,18 @@ const SendButton = styled.button`
     }
 `;
 
-const SendMessageToolbar = () => {
+const SendMessageToolbar = ({onSendMessage}) => {
     const [message, setMessage] = useState();
     return (
         <Container>
-            <MessageInput type="text" placeholder="type a message" onChange={(e) => {
+            <MessageInput type="text" value={message} placeholder="type a message" onChange={(e) => {
                 setMessage(e.target.value);
             }} />
-            <SendButton disabled={!message} onClick={() => {
+            <SendButton disabled={!message} onClick={async () => {
                 if(message){
-                    services.sendMessage(message, "fesaza");
+                    await services.sendMessage(message, "fesaza");
+                    setMessage("");
+                    onSendMessage && onSendMessage();
                 }
             }}>Send</SendButton>
         </Container>
