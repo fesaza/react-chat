@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components';
 import CardMessage from '../CardMessage';
 import services from '../../services';
@@ -14,6 +14,8 @@ const Container = styled.div`
 
 const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
     const [messages, setMessages] = useState([]);
+    const containerRef = useRef(null);
+
     useEffect(() => {
         const fetchData = async () => {
             onMessagesLoaded && onMessagesLoaded();
@@ -25,9 +27,15 @@ const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
             fetchData();
         }
     }, [messages.length, needRefresh, onMessagesLoaded]);
+
+    useEffect(() => {
+        containerRef.current.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
     return (
         <Container>
             {messages.map(message => (<CardMessage message={message} key={message._id} />))}
+            <div ref={containerRef}/>
         </Container>
     )
 }
