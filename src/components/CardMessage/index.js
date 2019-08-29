@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import UserContext from '../Context/UserContext';
 
 const Card = styled.div`
     background: #fff;
@@ -10,6 +11,7 @@ const Card = styled.div`
     flex-direction: column;
     width: max-content;
     max-width: 70%;
+    align-self: ${(props) => props.isOwn ? 'flex-end' : 'flex-start'}
 `;
 
 const SubTitle = styled.div`
@@ -32,15 +34,19 @@ const Message = styled.h4`
 
 const CardMessage = ({message}) => {
     return (
-        <Card>
-            <SubTitle>
-                {message.author}
-            </SubTitle>
-            <Message>
-                {message.message}
-            </Message>
-            <SubTitleTime>{new Date(message.timestamp).toLocaleString()}</SubTitleTime>
-        </Card>
+        <UserContext.Consumer>
+            {({ user }) => (
+                <Card isOwn={message.author === user}>
+                    <SubTitle>
+                        {message.author}
+                    </SubTitle>
+                    <Message>
+                        {message.message}
+                    </Message>
+                    <SubTitleTime>{new Date(message.timestamp).toLocaleString()}</SubTitleTime>
+                </Card>
+            )}
+        </UserContext.Consumer>
     )
 }
 

@@ -9,6 +9,7 @@ const Container = styled.div`
     height:calc(100% - 92px);
     overflow-y:auto;
     position: fixed;
+    max-width: 100%;
 `;
 
 const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
