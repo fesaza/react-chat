@@ -14,6 +14,9 @@ const Card = styled.div`
 
 const SubTitle = styled.div`
     color: gray;
+    @media(max-width: 700px) {
+        font-size: 12px;
+    }
 `;
 
 const SubTitleTime = styled(SubTitle)`
@@ -22,6 +25,9 @@ const SubTitleTime = styled(SubTitle)`
 
 const Message = styled.h4`
     margin: 8px 0 6px;
+    @media(max-width: 700px) {
+        font-size: 14px;
+    }
 `;
 
 const CardMessage = ({message}) => {

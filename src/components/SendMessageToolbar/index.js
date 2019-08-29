@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import services from '../../services';
 
 const Container = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -34,6 +34,9 @@ border: 1px solid #d9d9d9;
 border-radius: 4px;
 transition: all .3s;
 flex-basis: auto;
+@media(max-width: 700px) {
+    margin: 0;
+}
 &:hover {
     border-color: #fd8509;
     border-right-width: 1px !important;
@@ -63,6 +66,9 @@ const SendButton = styled.button`
     padding: 0 15px;
     font-size: 14px;
     border-radius: 4px;
+    @media(max-width: 700px) {
+        margin: 0px 50px 0 10px;
+    }
 `;
 
 const SendMessageToolbar = () => {
