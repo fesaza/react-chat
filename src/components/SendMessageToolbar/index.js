@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import services from '../../services';
-import Button from '../Button';
-import TextInput from '../TextInput';
+import Button from '../common/Button';
+import TextInput from '../common/TextInput';
 import UserContext from '../Context/UserContext';
 
 const Container = styled.div`

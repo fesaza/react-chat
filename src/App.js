@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import './App.css';
 import Chat from './components/Chat';
-import Button from './components/Button';
-import TextInput from './components/TextInput';
+import Button from './components/common/Button';
+import TextInput from './components/common/TextInput';
 import UserContextProvider from './components/Context/UserContextProvider';
 import UserContext from './components/Context/UserContext';
 
