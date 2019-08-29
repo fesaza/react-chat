@@ -30,7 +30,11 @@ const App = () => {
                             if(!user){
                                 return (<LoginContainer>
                                     <h4>Write your username: </h4>
-                                    <TextInput value={userName} onChange={e => setUserName(e.target.value)} />
+                                    <TextInput value={userName} onChange={e => setUserName(e.target.value)} onKeyDown={e => {
+                                        if(e.keyCode === 13){
+                                            setUser(userName);
+                                        }
+                                    }} />
                                     <Ok onClick={() =>{
                                         setUser(userName);
                                     }}>Ok</Ok>
