@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import UserContext from '../Context/UserContext';
 
 const Card = styled.div`
-    background: #fff;
+    background: ${(props) => props.isOwn ? '#ffec8f' : '#fff'};
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
     margin: 12px 20px;
     padding: 10px 20px;
