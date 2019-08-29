@@ -6,6 +6,9 @@ import services from '../../services';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    height:calc(100% - 92px);
+    overflow-y:auto;
+    position: fixed;
 `;
 
 const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
@@ -23,7 +26,7 @@ const MessagesList = ({ needRefresh, onMessagesLoaded }) => {
     }, [messages.length, needRefresh, onMessagesLoaded]);
     return (
         <Container>
-            {messages.map(message => (<CardMessage message={message} />))}
+            {messages.map(message => (<CardMessage message={message} key={message._id} />))}
         </Container>
     )
 }
