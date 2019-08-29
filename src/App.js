@@ -8,7 +8,15 @@ import UserContextProvider from './components/Context/UserContextProvider';
 import UserContext from './components/Context/UserContext';
 
 const LoginContainer = styled.div`
-padding: 20%;
+    padding: 30% 25%;
+    @media(max-width: 700px) {
+        padding: 30% 10%;
+    }
+`;
+
+const Ok = styled(Button)`
+    margin: 20px 0 0 !important;
+    width: 100%;
 `;
 
 const App = () => { 
@@ -17,15 +25,15 @@ const App = () => {
         <>
             <UserContextProvider>
                 <UserContext.Consumer>
-                    {({ user, setUser }) => 
+                    {({ user, setUser }) =>
                         {
                             if(!user){
                                 return (<LoginContainer>
                                     <h4>Write your username: </h4>
                                     <TextInput value={userName} onChange={e => setUserName(e.target.value)} />
-                                    <Button onClick={() =>{
+                                    <Ok onClick={() =>{
                                         setUser(userName);
-                                    }}>Ok</Button>
+                                    }}>Ok</Ok>
                                 </LoginContainer>)
                             }
 
